@@ -1,5 +1,5 @@
 (defpackage #:linkdemo-config (:export #:*base-directory*))
-(defparameter linkdemo-config:*base-directory* 
+(defparameter linkdemo-config:*base-directory*
   (make-pathname :name nil :type nil :defaults *load-truename*))
 
 (asdf:defsystem #:linkdemo
@@ -9,4 +9,5 @@
   :license "Your license here"
   :depends-on (:RESTAS :SEXML :POSTMODERN :IRONCLAD :BABEL)
   :components ((:file "defmodule")
+               (:file "pg-datastore")
                (:file "linkdemo")))
