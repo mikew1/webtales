@@ -53,6 +53,11 @@
 (defparameter *static-directory*
   (merge-pathnames #P"static/" linkdemo-config:*base-directory*))
 
+(sexml:with-compiletime-active-layers
+  (sexml:standard-sexml sexml:xml-doctype)
+  (sexml:support-dtd
+    (merge-pathnames "html5.dtd" (asdf:system-source-directory "sexml"))
+    :<))
 
 ;; [1] N.B. This is not defmethod, the lisp form, define-method is part of the
 ;;     define-policy syntax. What we see here is a giant 'policy', which sets

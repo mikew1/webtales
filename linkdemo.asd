@@ -10,4 +10,6 @@
   :depends-on (:RESTAS :SEXML :POSTMODERN :IRONCLAD :BABEL)
   :components ((:file "defmodule")
                (:file "pg-datastore")
+               (:file "util")
+               (:file "template")
                (:file "linkdemo")))
