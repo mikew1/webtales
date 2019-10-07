@@ -33,7 +33,7 @@
                           "upvote"))
                  "*")
              " "
-             (get link :votes)
+             (getf link :votes)
              " "
              (<:a :href (getf link :url) (getf link :title)))))
 

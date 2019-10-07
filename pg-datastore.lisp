@@ -5,10 +5,12 @@
 (defclass pg-datastore ()
   ((connection-spec :initarg :connection-spec :accessor connection-spec)))
 
-; *db* is for testing purposes, real app will use *datastore* ; probably can comment this out.
+; *db* is for testing purposes, real app will use *datastore*
 ; (defparameter *db*
-;   (make-instance 'pg-datastore
+;   (make-instance 'linkdemo.pg-datastore::pg-datastore
 ;                  :connection-spec '("webtales-linkdemo" "m" "" "localhost")))
+; (linkdemo.pg-datastore::datastore-get-all-links *db*)
+; -> ((:VOTES 1 :VOTED-P NIL :ID 1 :URL "A link from user1" :SUBMITTER-ID 4))
 ; (connection-spec *db*)        ; <- returns creds
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -26,7 +28,8 @@
 
 (defclass links ()
   ((id :col-type serial :reader link-id)
-   (url :col-type string :reader link-url :initarg :title)
+   (url :col-type string :reader link-url :initarg :url)
+   (title :col-type string :reader link-title :initarg :title)
    (submitter-id :col-type integer :reader link-submitter-id :initarg :submitter-id))
   (:metaclass dao-class)
   (:keys id))
