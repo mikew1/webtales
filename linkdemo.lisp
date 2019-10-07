@@ -2,39 +2,43 @@
 (in-package #:linkdemo)
 
 (define-route home ("")
-  (list :title "Linkdemo"
-        :body (home-page (get-all-links (logged-on-p)))))  ; [1]
+  (html-frame
+    (list :title "Linkdemo"
+          :body (home-page (get-all-links (logged-on-p))))))  ; [1]
 
-(define-route login ("login")                              ; [2]
-  (list :title "Log in"
-        :body (login-form)))
+(define-route login ("login")                                 ; [2]
+  (html-frame
+    (list :title "Log in"
+          :body (login-form))))
 
 (define-route login/post ("login" :method :post)
   (let ((user (auth-user (hunchentoot:post-parameter "username")
                          (hunchentoot:post-parameter "password"))))
     (if user
-        (log-in user)
+        (html-frame (log-in user))
         (redirect 'login))))
 
 
 (define-route register ("register")
-  (list :title "register"
-        :body (register-form)))
+  (html-frame
+    (list :title "register"
+          :body (register-form))))
 
 (define-route register/post ("register" :method :post)
   (let ((user (register-user (hunchentoot:post-parameter "username")
                              (hunchentoot:post-parameter "password"))))
     (if user
-        (log-in user)
+        (html-frame (log-in user))
         (redirect 'register))))
 
 (define-route logout ("logout")
-  (log-out))
+  (html-frame (log-out)))
 
 
 (define-route submit ("submit")
-  (list :title "Submit a link"
-        :body (submit-form)))
+  (html-frame
+    (list :title "Submit a link"
+          :body (submit-form))))
 
 (define-route submit/post ("submit" :method :post)
   (let ((link (post-link (hunchentoot:post-parameter "url")      ; [3]

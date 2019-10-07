@@ -21,14 +21,13 @@
                         (datastore-init nil))
   (setf *datastore* (apply #'make-instance datastore datastore-init))  ; [2]
   (init)                                                               ; [3]
-  (start '#:linkdemo :port port :render-method 'html-frame))           ; [4]
+  (start '#:linkdemo :port port))                                      ; [4]
 
 ;; [1] Note that redirect simply takes a quoted route name, neat.
 ;;     Could hardly be simpler.
 ;; [2] Will call start-linkdemo like so:
 
-;;     (linkdemo:start-linkdemo
-;;       :datastore-init '(connection-spec ("linkdemo" "m" "" "localhost")))
+;; (linkdemo:start-linkdemo :datastore-init '(:connection-spec ("webtales-linkdemo" "m" "" "localhost")))
 
 ;;     The apply here means call make-instance datastore with arg list as needed.
 ;;     Will look like (make-instance 'pg-datastore :connection-spec '(...))
@@ -36,6 +35,6 @@
 ;; [4] :render-method didn't work last time, might need to remove it.
 
 
-
+;;
 
 
