@@ -4,6 +4,7 @@
   (:interface-package #:linkdemo.policy.datastore)
   (:interface-method-template "DATASTORE-~A")
   (:internal-package #:linkdemo.datastore)
+  (:internal-function-template "~A")
 
   (define-method init ()                                    ; [1]
     "Initiate the datastore")
@@ -39,8 +40,9 @@
 ; PROGRESS STEP: just do some exploring: can the functions be used? What works in this state?
 
 (restas:define-module #:linkdemo                            ; [4]
-  (:use #:cl #:restas #:linkdemo.datastore))                ; <- use the datastore above where find-user
-                                                            ;    etc. are defined.
+  (:use #:cl #:restas #:linkdemo.datastore)                ; <- use the datastore above where find-user
+  (:export #:start-linkdemo))                              ;    etc. are defined.
+
 (defpackage #:linkdemo.pg-datastore                         ; [5]
   (:use #:cl #:postmodern #:linkdemo.policy.datastore)      ; <- use the generic fns that'll be defined
   (:export #:pg-datastore))
