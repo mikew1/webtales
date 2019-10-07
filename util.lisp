@@ -33,8 +33,3 @@
 ;;     Will look like (make-instance 'pg-datastore :connection-spec '(...))
 ;; [3] A call to datastore-init, in pg-datastore.
 ;; [4] :render-method didn't work last time, might need to remove it.
-
-
-;;
-
-

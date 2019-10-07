@@ -5,7 +5,7 @@
 (defclass pg-datastore ()
   ((connection-spec :initarg :connection-spec :accessor connection-spec)))
 
-; *db* is for testing purposes, real app will use *datastore*
+; Can test in repl with *db*, real app will use *datastore*
 ; (defparameter *db*
 ;   (make-instance 'linkdemo.pg-datastore::pg-datastore
 ;                  :connection-spec '("webtales-linkdemo" "m" "" "localhost")))
@@ -57,7 +57,7 @@
       (create-table 'links))                      ; <- with fks, uses create-table instead
     (unless (table-exists-p 'votes)
       (create-table 'votes))))
-; (datastore-init *db*)          ; <- initialize the db.
+; (datastore-init *db*)          ; <- initialize the db
 
 ; insert using dao:
 ; (with-connection (connection-spec *db*)
@@ -192,7 +192,6 @@
                       (get-all-links/internal)
                       (or username "")))))  ; <- &optional & or to stop upvoted-p
                                             ;    choking on nil for unlogged.
-
 
 ;; [1] The difference between a standard class definition and a dao class
 ;;     is that we have a :col-type option to our slots. That specifies what db

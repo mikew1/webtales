@@ -1,43 +1,30 @@
 ;;;; defmodule.lisp
-
 (restas:define-policy datastore
   (:interface-package #:linkdemo.policy.datastore)
   (:interface-method-template "DATASTORE-~A")
   (:internal-package #:linkdemo.datastore)
   (:internal-function-template "~A")
-
   (define-method init ()                                    ; [1]
     "Initiate the datastore")
-
   (define-method find-user (username)                       ; [3]
     "Find the user by username")
-
   (define-method auth-user (username password)
     "Check if a user exists and has the supplied password")
-
   (define-method register-user (username password)
     "Register a new user")
-
   (define-method upvoted-p (link-id username)
     "Check if a user has upvoted a link")
-
   (define-method upvote (link-id user)
     "Upvote a link")
-
   (define-method post-link (url title user)
     "Post a new link")
-
   (define-method get-all-links (&optional user)
     "Get all of the links in the datastore")
-
   (define-method upvote-count (link-id)
     "Get the number of upvotes for a given link"))
 
-; WEIRD - (ql:quickload "linkdemo") & get 'Error: The value NIL is not of the expected type STRING.'
-; Comment out above, quickload again, and it loads. The comment it in, quickload again, and no error. why?
-; In this condition, it IS now possible to start using the internal functions,
-;  e.g. (linkdemo.pg-datastore::hash-password "324")
-; PROGRESS STEP: just do some exploring: can the functions be used? What works in this state?
+; Bug: (ql:quickload "linkdemo") & got 'Error: The value NIL is not of the expected type STRING.'
+; Solution was: macro required (:internal-function-template "~A"), can't omit it as book showed.
 
 (restas:define-module #:linkdemo                            ; [4]
   (:use #:cl #:restas #:linkdemo.datastore)                ; <- use the datastore above where find-user
@@ -78,4 +65,3 @@
 ;;     access fns like find-user are defined. linkdemo.pg-datastore uses the
 ;;     interface package where the generic functions we need to implement the
 ;;     methods are defined". (p44).
-
