@@ -27,9 +27,13 @@
 ;;     Could hardly be simpler.
 ;; [2] Will call start-linkdemo like so:
 
+;; With pg-datastore:
 ;; (linkdemo:start-linkdemo :datastore-init '(:connection-spec ("webtales-linkdemo" "m" "" "localhost")))
+
+;; With redis-datastore:
+;; (linkdemo:start-linkdemo :datastore 'linkdemo.redis-datastore:redis-datastore)
 
 ;;     The apply here means call make-instance datastore with arg list as needed.
 ;;     Will look like (make-instance 'pg-datastore :connection-spec '(...))
-;; [3] A call to datastore-init, in pg-datastore.
+;; [3] A call to datastore-init, in pg-datastore; in redis-datastore, method exists, but doesn't do anything.
 ;; [4] :render-method didn't work last time, might need to remove it.

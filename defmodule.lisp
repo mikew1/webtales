@@ -34,6 +34,10 @@
   (:use #:cl #:postmodern #:linkdemo.policy.datastore)      ; <- use the generic fns that'll be defined
   (:export #:pg-datastore))
 
+(defpackage #:linkdemo.redis-datastore
+  (:use #:cl #:redis #:linkdemo.policy.datastore)          ; <- names of methods we must implement reside
+  (:export #:redis-datastore))                             ;    here.
+                                                           ; [6]
 (in-package #:linkdemo)
 
 (defparameter *template-directory*
@@ -60,8 +64,9 @@
 ;;     *datastore* will be a global var set in our case to postgres, which all these
 ;;     generics will dispatch on. That's done behind the scenes by restas, after you
 ;;     define a policy as above, when you call a method defined with define-method.
-;; [3] Then we need to define the restas module for our application.
-;; [4] "linkdemo uses the internal package linkdemo.datastore, where all the data
+;; [4] Then we need to define the restas module for our application.
+;; [5] "linkdemo uses the internal package linkdemo.datastore, where all the data
 ;;     access fns like find-user are defined. linkdemo.pg-datastore uses the
 ;;     interface package where the generic functions we need to implement the
 ;;     methods are defined". (p44).
+;; [6] the symbol redis-datastore names the class we use to access the datastore.
