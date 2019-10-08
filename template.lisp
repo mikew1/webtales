@@ -4,7 +4,8 @@
 
 (defun html-frame (context)                                 ; [1]
   (<:html
-    (<:head (<:title (getf context :title)))
+    (<:head (<:title (getf context :title))
+            (<:link :rel "stylesheet" :type "text/css" :href "/static/css/style.css"))
     (<:body
       (<:div
         (<:h1 (getf context :title))

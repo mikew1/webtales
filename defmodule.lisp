@@ -52,6 +52,10 @@
     (merge-pathnames "html5.dtd" (asdf:system-source-directory "sexml"))
     :<))
 
+(mount-module -static- (#:restas.directory-publisher)
+  (:url "static")
+  (restas.directory-publisher:*directory* *static-directory*))  ; [7]
+
 ;; [1] N.B. This is not defmethod, the lisp form, define-method is part of the
 ;;     define-policy syntax. What we see here is a giant 'policy', which sets
 ;;     up, so it seems, an inversion of control.
@@ -70,3 +74,9 @@
 ;;     interface package where the generic functions we need to implement the
 ;;     methods are defined". (p44).
 ;; [6] the symbol redis-datastore names the class we use to access the datastore.
+;; [7] syntax here is a (variable binding). *directory* is the directory to serve,
+;;     *static-directory* is the directory to bind it to.
+;;     note it looks like a package can have its own globals, referred to like
+;;     restas.directory-publisher:*directory*.
+;;     if that's correct, then the list given to mount-module is simply a varable binding.
+;;     (variable to-bind-to)
