@@ -4,36 +4,7 @@
 (define-route home ("")
   (html-frame
     (list :title "Linkdemo"
-          :body (home-page (get-all-links (logged-on-p))))))  ; [1]
-
-(define-route login ("login")                                 ; [2]
-  (html-frame
-    (list :title "Log in"
-          :body (login-form))))
-
-(define-route login/post ("login" :method :post)
-  (let ((user (auth-user (hunchentoot:post-parameter "username")
-                         (hunchentoot:post-parameter "password"))))
-    (if user
-        (html-frame (log-in user))
-        (redirect 'login))))
-
-
-(define-route register ("register")
-  (html-frame
-    (list :title "register"
-          :body (register-form))))
-
-(define-route register/post ("register" :method :post)
-  (let ((user (register-user (hunchentoot:post-parameter "username")
-                             (hunchentoot:post-parameter "password"))))
-    (if user
-        (html-frame (log-in user))
-        (redirect 'register))))
-
-(define-route logout ("logout")
-  (html-frame (log-out)))
-
+          :body (home-page (get-all-links (logged-on-p))))))     ; [1]
 
 (define-route submit ("submit")
   (html-frame
@@ -41,7 +12,7 @@
           :body (submit-form))))
 
 (define-route submit/post ("submit" :method :post)
-  (let ((link (post-link (hunchentoot:post-parameter "url")      ; [3]
+  (let ((link (post-link (hunchentoot:post-parameter "url")      ; [2]
                          (hunchentoot:post-parameter "title")
                          (logged-on-p))))
     (if link
@@ -60,9 +31,8 @@
 ;;     note that get-all-links actually calls datastore-get-all-links,
 ;;     via the clever policy. the goal seems to be hiding abstractions,
 ;;     & making what you write as a client as simple as possible. see p57 top.
-;; [2] Simply return the login-form.
-;; [3] post-link is the dao method here, find it as datastore-post-link.
-;; [4] what's noticeable so far is that route defs are so compact, because
+;; [2] post-link is the dao method here, find it as datastore-post-link.
+;; [3] what's noticeable so far is that route defs are so compact, because
 ;;     of the superbly concise data layer. with actions so compact,
 ;;     there's no need for separate controllers, & you have much better code.
 ;;     how this bears up under further strain is of course the qu.

@@ -27,8 +27,8 @@
 ; Solution was: macro required (:internal-function-template "~A"), can't omit it as book showed.
 
 (restas:define-module #:linkdemo                            ; [4]
-  (:use #:cl #:restas #:linkdemo.datastore)                ; <- use the datastore above where find-user
-  (:export #:start-linkdemo))                              ;    etc. are defined.
+  (:use #:cl #:restas #:linkdemo.datastore #:authdemo)     ; <- use the datastore above where find-user
+  (:export #:start-linkdemo))                              ;    etc. are defined, plus now sep. auth module.
 
 (defpackage #:linkdemo.pg-datastore                         ; [5]
   (:use #:cl #:postmodern #:linkdemo.policy.datastore)      ; <- use the generic fns that'll be defined
@@ -56,6 +56,14 @@
   (:url "static")
   (restas.directory-publisher:*directory* *static-directory*))  ; [7]
 
+(mount-module -authdemo- (#:authdemo)                           ; [8]
+  ;(:render-method 'html-frame)                                 ; [9]
+  ;(authdemo::*html-frame* #'html-frame) ; <- had idea to pass html-frame as context here,
+  ;                                           but am failing to understand how to refer to it.
+  (authdemo::*authenticate-user-function* #'auth-user)  ; <- had to ref internal symbols here '::', book
+  (authdemo::*register-user-function* #'register-user)  ;    used just ':', maybe restas code changed.
+  (authdemo::*redirect-route* 'home))                           ; [10]
+
 ;; [1] N.B. This is not defmethod, the lisp form, define-method is part of the
 ;;     define-policy syntax. What we see here is a giant 'policy', which sets
 ;;     up, so it seems, an inversion of control.
@@ -80,3 +88,19 @@
 ;;     restas.directory-publisher:*directory*.
 ;;     if that's correct, then the list given to mount-module is simply a varable binding.
 ;;     (variable to-bind-to)
+;; [8] Mount our new module.
+;;     N.B. Upon mounting, restas will automatically generate symbols for each route
+;;     within a mounted package within the current package. In our case, these will be:
+;;     -authdemo-.login, .login/post, .register, .register/post & .logout
+;;     These symbols can now be used in the current package with genurl or redirect.
+;;     Exactly as we would want. Great. Now modules can interact without knowing much
+;;     about each other. (In laravel, route() was simply in a global namespace, i.e., no
+;;     specification of dependencies exists. Kind of ok, maybe, but will ultimately restrict you).
+;; [9] In earlier chapters, we removed :render-method in existing code as it wasn't working.
+;;     At a guess that may be due to changes in restas code since book was published.
+;;     Ideas for fix, simply to get this code to working state:
+;;     - If html-frame is not in scope within the module, could just copy that fn across.
+;;     - Or, perhaps better, if this makes sense, add it as another context variable,
+;;       to just pass it across, nice.
+;; [10] A mounted module can use the routes of the module it is mounted within, which means
+;;      we can just pass 'home here (not sure how this is implemented - find out if need).

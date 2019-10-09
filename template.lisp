@@ -14,16 +14,16 @@
             (list
               (<:a :href (genurl 'submit) "Submit a link")
               " | "
-              (<:a :href (genurl 'logout)
+              (<:a :href (genurl '-authdemo-.logout)        ; [2] <- ref route in -authdemo-
                    (format nil "Logout ~A"
                            (logged-on-p))))
-            (list (<:a :href (genurl 'login) "Log in")
+            (list (<:a :href (genurl '-authdemo-.login) "Log in")
                   " or "
-                  (<:a :href (genurl 'register) "Register")))
+                  (<:a :href (genurl '-authdemo-.register) "Register")))
         (<:hr))
       (getf context :body))))
 
-(defun home-page (links)                                    ; [2]
+(defun home-page (links)                                    ; [3]
   (loop
     for link in links
     collect
@@ -38,22 +38,6 @@
              " "
              (<:a :href (getf link :url) (getf link :title)))))
 
-(defun login-form ()                                        ; [3]
-  (<:form :action (genurl 'login/post) :method "post"
-      "User name:" (<:br)
-      (<:input :type "text" :name "username") (<:br)
-      "Password:" (<:br)
-      (<:input :type "password" :name "password") (<:br)
-      (<:input :type "submit" :value "Log in")))
-
-(defun register-form ()
-  (<:form :action (genurl 'register/post) :method "post"
-      "User name:" (<:br)
-      (<:input :type "text" :name "username") (<:br)
-      "Password:" (<:br)
-      (<:input :type "password" :name "password") (<:br)
-      (<:input :type "submit" :value "Register")))
-
 (defun submit-form ()
   (<:form :action (genurl 'submit/post) :method "post"
           "Title:" (<:br)
@@ -63,8 +47,9 @@
           (<:input :type "submit" :value "Submit")))
 
 ;; [1] html-frame similar to in blogdemo, but now has register option.
-;; [2] home-page takes a list of links, which are plists. It then displays
+;; [2] Reference to one of the routes which are created as new symbols in this package
+;;     when the module authdemo is mounted, with mount-module, in this app/module.
+;; [3] home-page takes a list of links, which are plists. It then displays
 ;;     all the links on separate lines. On each line, is either an upvote link,
 ;;     or a * if the user isn't logged in, followed by a vote count & the actual
 ;;     link. If user has already upvoted, instead of upvote, we show a *.
-;; [3] Lovely and compact. Half the LOC of a template lang, & don't need sep. files.

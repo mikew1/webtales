@@ -7,7 +7,8 @@
   :description "Your description here"
   :author "Your name here"
   :license "Your license here"
-  :depends-on (:RESTAS :SEXML :POSTMODERN :IRONCLAD :BABEL :cl-redis :restas-directory-publisher) ; [1]
+  :depends-on (:RESTAS :SEXML :POSTMODERN :IRONCLAD :BABEL :cl-redis
+               :restas-directory-publisher :authdemo)                   ; [1]
   :components ((:file "defmodule")
                (:file "pg-datastore")
                (:file "redis-datastore")
@@ -15,6 +16,6 @@
                (:file "template")
                (:file "linkdemo")))
 
-;; [1] module is pulled in just the same way as a package; it is a package.
+;; [1] modules are pulled in just the same way as packages; they are packages.
 ;;     as often in lisp, there's nothing extra, no extra nonsense to complicate.
 
