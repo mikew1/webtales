@@ -9,9 +9,8 @@ is that perhaps the [restas](https://github.com/archimag/restas)
 source has changed a bit since the book was published.
 
 My Lisp adventures have as ever been greatly inspired and helped by the wonderful CL folks on stackoverflow
-with special thanks to Rainer Joswig, Renzo & coredump. I am always amazed at how such experienced
+with special thanks to Rainer Joswig, Renzo & coredump. It's always an inspiration that such experienced
 and knowledgeable folks give their time and expertise so freely to the interested learner.
-You folks are an inspiration on many levels.
 
 # Rationale
 
