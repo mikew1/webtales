@@ -29,8 +29,9 @@ in other languages, seeing how these same problems are conquered in LISP seemed 
 - To take a different example, the framework here, Restas, uses generic functions to achieve what in OO is called 
   Inversion of control. It does it with virtually no ceremony which I don't think could be said of OO code. Reason is 
   the powerful constructs in the language. In this case, generic functions.
-- Freer organisation. MVC is just one option. Because of the lack of DSLs as mentioned, you're much freer to code in a way 
-  that suits the task at hand.
+- Freer organisation. MVC is just one option. Because of the lack of DSL's as mentioned, you're much freer to code in a way 
+  that suits the task at hand in minimalistic manner. Minimalism in code is greatly underestimated. Smaller programs are 
+  easier to change and maintain. That means you are immediately more agile if you code minimalistically.
 - Code is about 50% shorter for the same tasks.
 - Easier to understand (once you've learnt Lisp, of course).
 
