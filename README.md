@@ -26,8 +26,8 @@ in other languages, seeing how these same problems are conquered in LISP seemed 
 - Lisp tends to not do that and it's only when you've seen that it's possible do you realise what barriers
   those other systems actually erect to your thinking. You are no longer forced to use multiple incompatible languages.
 - To take a different example, the framework here, Restas, uses generic functions to achieve what in OO is called 
-  Inversion of control. It does it with virtually no ceremony which could not be said of OO code. Reason is the powerful
-  constructs in the language. In this case, generic functions.
+  Inversion of control. It does it with virtually no ceremony which could I don't think could be said of OO code. Reason is 
+  the powerful constructs in the language. In this case, generic functions.
 - Freer organisation. MVC is just one option. Because of the lack of DSLs as mentioned, you're much freer to code in a way 
   that suits the task at hand.
 - Code is about 50% shorter for the same tasks.
