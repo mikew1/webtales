@@ -20,11 +20,11 @@ in other languages, seeing how these same problems are conquered in LISP seemed 
 
 ## Main points - web programming in Lisp
 
-- The common languages used for web programming all seem to create a bunch of DSLs which we must navigate.
-  The most obvious are those for templating and validation. (My point is that those are different from the core language, 
-  i.e. they are different syntactically). Personally I only really became aware of this from the perspective of lisp. 
+- The common languages used for web programming all seem to create a bunch of DSLs which we must navigate and which are not 
+  compatible with one another. The most obvious are those for templating and validation. (My point is that those are different   from the core language, i.e. they are different from that syntactically, and from each other). Personally I only really 
+  became aware of this from the perspective of lisp. Then I started to think about its impact. It's pretty big. 
 - Lisp tends to not do that and it's only when you've seen that it's possible do you realise what barriers
-  those other systems actually erect to your thinking.
+  those other systems actually erect to your thinking. You are no longer forced to use multiple incompatible languages.
 - To take a different example, the framework here, Restas, uses generic functions to achieve what in OO is called 
   Inversion of control. It does it with virtually no ceremony which could not be said of OO code. Reason is the powerful
   constructs in the language. In this case, generic functions.
