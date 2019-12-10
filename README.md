@@ -21,8 +21,8 @@ in other languages, seeing how these same problems are conquered in LISP seemed 
 ## Main points - web programming in Lisp
 
 - The common languages used for web programming all seem to create a bunch of DSLs which we must navigate.
-  The most obvious are those for templating and validation. (Those are different from the core language, i.e. 
-  all different syntactically). Personally I only really became aware of this from the perspective of lisp. 
+  The most obvious are those for templating and validation. (My point is that those are different from the core language, 
+  i.e. they are different syntactically). Personally I only really became aware of this from the perspective of lisp. 
 - Lisp tends to not to do that and it's only when you've seen that it's possible do you realise what barriers
   those other systems actually erect to your thinking.
 - The framework here, Restas, uses generic functions to achieve what OO people call Inversion of control.
