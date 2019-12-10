@@ -32,9 +32,8 @@ in other languages, seeing how these same problems are conquered in LISP seemed 
 - Code is about 50% shorter for the same tasks.
 - Plus it's easier to understand (once you've learnt Lisp, of course).
 
-----
 
-### Details if you want to run the code
+## Details if you want to run the code
 
 I used [CCL](https://ccl.clozure.com/) for this, as [asdf](https://common-lisp.net/project/asdf/) is 
 needed and [CLisp](https://clisp.sourceforge.io/) which I'd been using has an older version of asdf which
