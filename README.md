@@ -15,52 +15,22 @@ and knowledgeable folks give their time and expertise so freely to the intereste
 # Rationale
 
 Having completed more or less all of Paul Graham's book ANSI Common Lisp, I needed to find ways
-to get more practice. (I haven't done [Siebel's book](http://www.gigamonkeys.com/book/) yet, but 
-may do that soon).
+to get more practice. Since I have close familiarity with the problem web applications solve from my day to day work
+in other languages, seeing how these same problems are conquered in LISP seemed like a good plan. 
 
-Since I have close familiarity with the problem web applications solve from my day to day work
-in another lesser language, seeing how these same problems are conquered 
-in LISP seemed like a good plan. 
+### Main points - web programming in Lisp
 
-# Outcome
-
-The book Lisp webtales by Pavel Penev takes you step by step through building a simple web application 
-and shows you how minimal and yet powerful a web framework can be in a Lisp. 
-It delivers on that promise admirably. I was not disappointed.
-
-Here's what I got from it
-
-- Insight into what web application code can look like in a Lisp.
-
-- Correspondingly, how verbose and inflexible the solution to the same problem actually
-  is in another language I am familiar with.
-
-Note that while the tool here is Common Lisp, these points are directly applicable to Clojure too.
-
-### Main points - some thoughts on web programming in Lisp
-
-- You can pick between what we know from every other web framework as a templating language,
-  and another option, seemingly unique to lisp, an html generator.
-  With the latter, your "templates" become **~50% less LOC** and easier to read.
-  
-- I noticed how restas here uses the core facilities of Lisp, and conversely how
-  **other frameworks erect their own OO derived structure** which you have no sensible 
-  choice other than to learn & live with. **Lisp is minimal, and easier to understand**, because
-  there's less to remember - once you know Lisp itself. You do have to invest in that.
-   
-- For example, restas uses generic functions to achieve what's called IoC (Inversion
-  of control) in other frameworks. It does it in a much simpler way and with much less
-  code to type. 
-
-- You can write in MVC **if you want**, but that is just one of many options you have.
-  You use the core facilities of the language itself. There is no gigantic structure
-  erected by framework authors which you have to accomodate to.
-  
-- I feel sure that coding this way, whether it ends up being CL itself or Clojure
-  (any platform will have [its own deployment issues](https://tech.grammarly.com/blog/running-lisp-in-production))
-  can result in **much greater agility**. 
-
-- That means if you base your business on this you can [win](http://www.paulgraham.com/avg.html).
+- The common languages used for web programming all seem to create a bunch of DSLs which we must navigate.
+  The most obvious are those for templating and validation. (Those are different from the core language, i.e. 
+  all different syntactically). Personally I only really became aware of this from the perspective of lisp. 
+- Lisp tends to not to do that and it's only when you've seen that it's possible do you realise what barriers
+  those other systems actually erect to your thinking.
+- The framework here, Restas, uses generic functions to achieve what OO people call Inversion of control.
+  It does it much more simply and powerfully and without the sometimes extreme ceremony of much OO code.
+- MVC is just one option. Because of the lack of DSLs as mentioned, you're much freer to code in a way 
+  that suits the task at hand.
+- Code is about 50% shorter for the same tasks.
+- Plus it's easier to understand (once you've learnt Lisp, of course).
 
 ----
 
