@@ -23,14 +23,15 @@ in other languages, seeing how these same problems are conquered in LISP seemed 
 - The common languages used for web programming all seem to create a bunch of DSLs which we must navigate.
   The most obvious are those for templating and validation. (My point is that those are different from the core language, 
   i.e. they are different syntactically). Personally I only really became aware of this from the perspective of lisp. 
-- Lisp tends to not to do that and it's only when you've seen that it's possible do you realise what barriers
+- Lisp tends to not do that and it's only when you've seen that it's possible do you realise what barriers
   those other systems actually erect to your thinking.
-- The framework here, Restas, uses generic functions to achieve what OO people call Inversion of control.
-  It does it much more simply and powerfully and without the sometimes extreme ceremony of much OO code.
-- MVC is just one option. Because of the lack of DSLs as mentioned, you're much freer to code in a way 
+- To take a different example, the framework here, Restas, uses generic functions to achieve what in OO is called 
+  Inversion of control. It does it with virtually no ceremony which could not be said of OO code. Reason is the powerful
+  constructs in the language. In this case, generic functions.
+- Freer organisation. MVC is just one option. Because of the lack of DSLs as mentioned, you're much freer to code in a way 
   that suits the task at hand.
 - Code is about 50% shorter for the same tasks.
-- Plus it's easier to understand (once you've learnt Lisp, of course).
+- Easier to understand (once you've learnt Lisp, of course).
 
 
 ## Details if you want to run the code
