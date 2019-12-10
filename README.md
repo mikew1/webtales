@@ -12,13 +12,13 @@ My Lisp adventures have as ever been greatly inspired and helped by the wonderfu
 with special thanks to Rainer Joswig, Renzo & coredump. It's always an inspiration that such experienced
 and knowledgeable folks give their time and expertise so freely to the interested learner.
 
-# Rationale
+## Rationale
 
 Having completed more or less all of Paul Graham's book ANSI Common Lisp, I needed to find ways
 to get more practice. Since I have close familiarity with the problem web applications solve from my day to day work
 in other languages, seeing how these same problems are conquered in LISP seemed like a good plan. 
 
-### Main points - web programming in Lisp
+## Main points - web programming in Lisp
 
 - The common languages used for web programming all seem to create a bunch of DSLs which we must navigate.
   The most obvious are those for templating and validation. (Those are different from the core language, i.e. 
@@ -34,7 +34,7 @@ in other languages, seeing how these same problems are conquered in LISP seemed 
 
 ----
 
-#### Details if you want to run the code
+### Details if you want to run the code
 
 I used [CCL](https://ccl.clozure.com/) for this, as [asdf](https://common-lisp.net/project/asdf/) is 
 needed and [CLisp](https://clisp.sourceforge.io/) which I'd been using has an older version of asdf which
